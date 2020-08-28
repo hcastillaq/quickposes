@@ -6,14 +6,57 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
+
+    <link rel="stylesheet" href="./css/boostrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+  
 
+    <div id="preConfig">
+      <input type="file" id="pathFolder" webkitdirectory directory >
+    </div>
+
+    <div id="sessionContainer">
+      <div id="sessionConfigurations">
+        <div id="sessionTimer"></div>
+        <div id="sessionTimerButtons" class="align">
+          <input type="button" id="previousImage" value="<-">
+          <input type="button" id="pauseImage" value="pause">
+          <input type="button" id="nextImage" value="->">
+        </div>
+        <div id="sessionTimerPosterize">
+          <div class="align">
+              <label for="posterize">Posterize</label>
+              <input type="checkbox" name="posterize" id="posterize">
+          </div>
+          <div class="align">
+              <label for="posterize">Gray</label>
+              <input type="checkbox" name="gray" id="gray">
+          </div>
+          <div class="align">
+            <label for="blur">Blur</label>
+            <input type="checkbox" name="gray" id="blur">
+          </div>
+          <input type="number" id="levels" value="3">
+          <h4 id="counterTimer"></h4>
+        </div>
+      </div>
+      <div id="canvasContainers">
+        <div id="canvasContainer"></div>
+        <div id="canvasContainerPosterize"></div>
+      </div>
+    </div>
+    
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
+
+    <!-- easytimmer -->
+    <script src="./libraries/easytimmer.js"></script>
+
+    <!-- p5js -->
+    <script src="./libraries/p5.min.js"></script>
+
+
   </body>
 </html>

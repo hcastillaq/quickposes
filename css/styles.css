@@ -1,0 +1,57 @@
+*{
+    padding:0px;
+    margin: 0px;
+}
+
+body{
+    background-color: #000;
+    overflow: hidden;
+}
+#sessionContainer{
+    width: 100%;
+    height: 90vh;
+    background-color: #000;
+    display: flex;
+    flex-direction: row;
+}
+
+#canvasContainers{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvasContainer{
+    flex:1;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#canvasContainerPosterize{
+    display: none;
+    flex:1;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#sessionConfigurations{
+    width: calc(100vw * 0.1);
+    height: 100%;
+    border:1px solid orange;
+    color:white;
+}
+
+.align{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counterTimer{
+    color:white;
+}
