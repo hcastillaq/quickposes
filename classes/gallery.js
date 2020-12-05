@@ -16,8 +16,10 @@ class Gallery {
     validTypes = ['jpg', 'png', 'jpeg'];
     currentImage = null;
     currentIndexPreload = 0;
+
     originalImages = [];
     images = [];
+
     preloadImagesArray = [];
     p5preloadImagesArray = [];
     
@@ -25,11 +27,11 @@ class Gallery {
 
     config = {
         session: false,
-        time: 0,
+        seconds: 10,
         posterize: false,
         gray: false,
         status: 'inactive',
-        levels:3,
+        levels:2,
         blur: false
     }
 
@@ -40,6 +42,11 @@ class Gallery {
 
     get currentIndexPreload(){
         return this.currentIndexPreload;
+    }
+
+    get originalImages()
+    {
+        return this.originalImages;
     }
 
     get images()
@@ -53,6 +60,16 @@ class Gallery {
 
     set currentImage(image){
         this.currentImage = image;
+    }
+
+     /**
+     * @param { Array} Array - Array of Files {name:'name', path:'path'}
+     */
+    loadImages(ArrayFiles)
+    {
+        this.images = ArrayFiles.filter( e => this.validateImagesTypes(e));
+        this.originalImages = this.images;
+        this.maxImages = this.images.length -1;
     }
 
     
@@ -75,7 +92,6 @@ class Gallery {
     }
 
     preloadImages(){
-        console.log('preload images');
         const auxArray = [];
         for(let i = 0; i <= this.maxPreload; i++){
             const index = Math.floor(Math.random() * (this.images.length - 1));
@@ -90,19 +106,11 @@ class Gallery {
         this.preloadImages();
         this.currentIndexPreload = 0;
         this.currentImage = this.preloadImagesArray[this.currentIndexPreload];
+        this.config.session = true;
     }
 
 
-    /**
-     * @param { Array} Array - Array of Files {name:'name', path:'path'}
-     */
-    loadImages(ArrayFiles)
-    {
-        this.images = ArrayFiles.filter( e => this.validateImagesTypes(e));
-        this.originalImages = this.images;
-        this.maxImages = this.images.length -1;
-    }
-
+   
     next(){
         if(this.currentIndexPreload !== this.maxImages){
             if(this.preloadCounter === this.reloadPreload){
@@ -115,10 +123,10 @@ class Gallery {
                 this.currentImage = this.preloadImagesArray[this.currentIndexPreload];
                 observer.notify(this.emits.CHANGE_IMAGE);
         }else{
-            observer.notify(this.emits.FINISH_SESSION);
+            this.finishSession();
         }
     }
-
+    
     previous(){
         if(this.currentIndexPreload >= 0){
             if(this.currentIndexPreload !==0) this.currentIndexPreload -= 1;
@@ -131,7 +139,22 @@ class Gallery {
 
     finishSession()
     {
-        
+        this.config.session = false;
+        this.currentIndexPreload = 0;
+        this.preloadCounter = 0;
+        this.reloadImagesArray = [];
+        this.p5preloadImagesArray = [];
+        this.currentImage = [];
+        this.config =  {
+            session: false,
+            seconds: 10,
+            posterize: false,
+            gray: false,
+            status: 'inactive',
+            levels:2,
+            blur: false
+        }
+        observer.notify(this.emits.FINISH_SESSION);
     }
 }
 

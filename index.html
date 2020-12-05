@@ -2,17 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval';" />
     <title>Hello World!</title>
 
     <link rel="stylesheet" href="./css/boostrap.min.css">
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
-  
 
+    <div id="app">
+      <router-view></router-view>
+    </div>
+    
+    
+    
+    <!-- 
     <div id="preConfig">
       <input type="file" id="pathFolder" webkitdirectory directory >
     </div>
@@ -46,17 +50,16 @@
         <div id="canvasContainer"></div>
         <div id="canvasContainerPosterize"></div>
       </div>
-    </div>
+    </div> -->
     
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
-
     <!-- easytimmer -->
     <script src="./libraries/easytimmer.js"></script>
-
     <!-- p5js -->
     <script src="./libraries/p5.min.js"></script>
-
+    <script src="./libraries/vue.development.js"></script>
+    <script src="./libraries/vue.router.js"></script>
 
   </body>
 </html>

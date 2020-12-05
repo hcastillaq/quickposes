@@ -5,7 +5,6 @@ class GalleryTimer{
     timer = null;
     config = {};
     seconds = 10;
-    finish = false;
 
     constructor(){
         if (GalleryTimer.instance) return GalleryTimer.instance;
@@ -41,7 +40,7 @@ class GalleryTimer{
     }
     
     start(seconds = this.seconds){
-        if(!this.finish){
+        if(gallery.config.session){
             this.seconds = seconds;
             if(this.timer.isRunning())
             {

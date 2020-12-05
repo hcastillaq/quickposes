@@ -1,21 +1,23 @@
-*{
-    padding:0px;
+* {
+    padding: 0px;
     margin: 0px;
 }
 
-body{
+body {
     background-color: #000;
     overflow: hidden;
 }
-#sessionContainer{
+
+#sessionContainer {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     background-color: #000;
     display: flex;
     flex-direction: row;
 }
 
-#canvasContainers{
+#canvasContainers {
+    overflow: hidden;
     width: 90%;
     height: 100%;
     display: flex;
@@ -23,35 +25,76 @@ body{
     align-items: center;
 }
 
-#canvasContainer{
-    flex:1;
+#canvasContainer {
+    flex: 1;
     height: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
+    overflow: hidden;
+
+
 }
 
-#canvasContainerPosterize{
-    display: none;
-    flex:1;
+#canvasContainerPosterize {
+    flex: 1;
     height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#sessionConfigurations{
+#sessionConfigurations {
     width: calc(100vw * 0.1);
     height: 100%;
-    border:1px solid orange;
-    color:white;
+    background: #fafafa;
+    color: black;
+    padding: 10px;
 }
 
-.align{
+.align {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.counterTimer{
-    color:white;
+.align--between {
+    justify-content: space-between !important;
+}
+
+.counterTimer {
+    color: white;
+}
+
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #3333;
+}
+
+
+#preConfig {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#preConfig>.card>.card-body {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+#preConfig>.card #pathFolder {
+    width: 0px;
+    height: 0px;
+}
+
+
+#sessionTimerButtons input {
+    margin: 5px;
 }
