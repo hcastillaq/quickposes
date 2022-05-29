@@ -1,0 +1,6 @@
+[submodule "quickposes-back"]
+	path = quickposes-back
+	url = https://github.com/hcastillaq/quickposes-back
+[submodule "quickposes-front"]
+	path = quickposes-front
+	url = https://github.com/hcastillaq/quickposes-front
